@@ -1,0 +1,44 @@
+import numpy as np
+import h5py
+    #how to read dataset - simple matrix
+with h5py.File('C:\VDOT\HRTPO\Highway_Skims\Peak\Trip Distribution\FBCONGTIMESOV.omx', 'r') as hdf:
+    ls = list(hdf.keys())
+    print('List of datasets in this file: \n', ls)
+    data = hdf.get('dataset1')
+    dataset1 = np.array(data)
+    print('Shape of dataset1: \n', dataset1.shape)
+#dataset1
+
+f = h5py.File('C:\VDOT\HRTPO\Highway_Skims\Peak\Trip Distribution\FBCONGTIMESOV.omx', 'r') 
+ls = list(f.keys())
+f.close()
+
+# how to read groups and subgroups
+with h5py.File('C:\VDOT\HRTPO\Highway_Skims\Peak\Trip Distribution\FBCONGTIMESOV.omx', 'r') as hdf:
+    base.items = list(hdf.items())
+    print('Items in the base directory:', base_items)
+    # Group1 = 'data'
+    G1 = hdf.get('data')
+    G1_items = list(G1.items())
+    print('Items in Group1: data:', G1_items)
+    dataset4 = np.array(G1.get('dataset'))
+    print(dataset4.shape)
+    
+  # For Trip Distribution: SOV: 
+  # Group1 data has a shape(3033, 3033)
+  # Sub Group lists:  EECost, EICost, HBOCost, HBWCost, NHBCost, 
+  #               SOVCostEE, SOVCostEI, SOVCostHBO, SOVCostHBW, SOVCostNHB, 
+  #               SOVDistEE, SOVDistEI, SOVDistHBO, SOVDistHBW, SOVDistNHB, 
+  #               SOVTimeEE, SOVTimeEI, SOVTimeHBO, SOVTimeHBW, SOVTimeNHB, 
+  #               TrkTollVal, Trk_Cost, Trk_Dist, Trk_Time
+  #
+  # G1 = hdf.get('data')
+  # Subgroup
+  # G11 = G1.get('/data/EECost')
+  # G11_items = list(G11.items())
+  # dataset3 = np.array(G11.get('EECost'))
+  # print(dataset3.shape)
+
+f = h5py.File('C:\VDOT\HRTPO\Highway_Skims\Peak\Trip Distribution\FBCONGTIMESOV.omx', 'r') 
+ls = list(f.keys())
+f.close()
